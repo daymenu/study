@@ -1,0 +1,28 @@
+version: '3'
+services:
+ app-nginx:
+  build: ./nginx
+  container_name: nginx.app.host
+  ports: 
+   - 80:80
+   - 81:81
+  links: 
+   - app-phpfpm
+  depends_on: 
+   - app-phpfpm
+  volumes:
+   - ./hello/:/www/hello/
+ app-mysql:
+  build: ./mysql
+  container_name: mysql.app.host
+  hostname: mysql.app.host
+ app-phpfpm:
+  build: ./php
+  container_name: phpfpm.app.host
+  hostname: phpfpm.app.host
+  links:
+   - app-mysql
+  depends_on: 
+   - app-mysql
+  volumes: 
+   - ./hello/:/www/hello/

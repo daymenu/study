@@ -1,0 +1,33 @@
+version: '3'
+networks:
+  kafka:
+services:
+  zk1_service:
+    image: zookeeper:3.6
+    container_name: zk1.local
+    hostname: zk1.local
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zk1.local:2888:3888;2181 server.2=zk2.local:2888:3888;2181 server.3=zk3.local:2888:3888;2181
+
+  zk2_service:
+    image: zookeeper:3.6
+    container_name: zk2.local
+    hostname: zk2.local
+    ports:
+      - "2182:2181"
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zk1.local:2888:3888;2181 server.2=zk2.local:2888:3888;2181 server.3=zk3.local:2888:3888;2181
+
+  zk3_service:
+    image: zookeeper:3.6
+    container_name: zk3.local
+    hostname: zk3.local
+    ports:
+      - "2183:2181"
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zk1.local:2888:3888;2181 server.2=zk2.local:2888:3888;2181 server.3=zk3.local:2888:3888;2181
