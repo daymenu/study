@@ -7,7 +7,7 @@
 [consul](https://kingfree.gitbook.io/consul/)  
 
 # 本项目文档　
-[文档地址](https://daymenu.github.io/shipping/)
+[文档地址](docs/index.md)
 
 ## 说在前面
   - 这个教程是我入门微服务的教程，最开始是在studygolang.com中开始接触的看到这系列文章的。
